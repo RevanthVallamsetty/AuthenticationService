@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RefreshScope
 @RestController
-@RequestMapping("/verifyemail")
 public class EmailController {
 	
 List<String> validEmails = Arrays.asList("vallamsettyrevanth@gmail.com","phanindra123.lekkala@gmail.com","phanindrajava1@gmail.com");
 
-@RequestMapping(method = RequestMethod.POST)
-public ResponseEntity<String> validateEmail(@RequestParam(value="email") String email) {
+@RequestMapping(method = RequestMethod.POST,value="/verifyemails")
+public ResponseEntity<String> validateEmail(@RequestBody String email) {
 	
 	if (validEmails.contains(email)) {
 		return ResponseEntity.ok().body("User is valid");
